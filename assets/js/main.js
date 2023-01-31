@@ -1,9 +1,9 @@
 /*=============== CHANGE BACKGROUND HEADER ===============*/
-const scrollHeader = () =>{
+function scrollHeader(){
     const header = document.getElementById('header')
     // When the scroll is greater than 50 viewport height, add the scroll-header class to the header tag
-    this.scrollY >= 50 ? header.classList.add('scroll-header') 
-                       : header.classList.remove('scroll-header')
+    if(this.scrollY >= 50) header.classList.add('scroll-header');
+    else header.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
 
@@ -32,7 +32,7 @@ modalClose.forEach((mc, i) =>{
 })
 
 /*=============== MIXITUP FILTER PORTFOLIO ===============*/
-let mixerPortfolio = mixtup('.work__container', {
+let mixerPortfolio = mixitup('.work__container', {
     selectors: {
         target: '.work__card'
     },
@@ -49,12 +49,12 @@ function activeWork(){
     this.classList.add('active-work')
 }
 
-linkWork.forEach(l=> l.addEventListener('click, activeWork'))
+linkWork.forEach(l=> l.addEventListener('click', activeWork))
 
 /*=============== SWIPER TESTIMONIAL ===============*/
 let swiperTestimonial = new Swiper(".testimonial__container", {
     spaceBetween: 24,
-    loop:true,
+    loop: true,
     grabCursor: true,
 
     pagination: {
@@ -96,19 +96,19 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll('section[id]')
     
-const scrollActive = () =>{
+function scrollActive(){
   	const scrollY = window.pageYOffset
 
 	sections.forEach(current =>{
 		const sectionHeight = current.offsetHeight,
 			  sectionTop = current.offsetTop - 58,
-			  sectionId = current.getAttribute('id'),
-			  sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+			  sectionId = current.getAttribute('id')
+			//   sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
 
 		if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-			sectionsClass.classList.add('active-link')
+			document.querySelector('.nav__menu a[href*=' + sectionId + ']').class.classList.add('active-link')
 		}else{
-			sectionsClass.classList.remove('active-link')
+			document.querySelector('.nav__menu a[href*=' + sectionId + ']').class.classList.remove('active-link')
 		}                                                    
 	})
 }
