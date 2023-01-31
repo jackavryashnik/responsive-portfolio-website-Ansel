@@ -42,7 +42,7 @@ let mixerPortfolio = mixitup('.work__container', {
 })
 
 /* Link active work */ 
-const linkWork = document.querySelectorAll('.work_item')
+const linkWork = document.querySelectorAll('.work__item')
 
 function activeWork(){
     linkWork.forEach(l=> l.classList.remove('active-work'))
@@ -73,42 +73,22 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
 
 });
 
-// const sections = document.querySelectorAll('section[id]')
-    
-// const scrollActive = () =>{
-//   	const scrollY = window.pageYOffset
-
-// 	sections.forEach(current =>{
-// 		const sectionHeight = current.offsetHeight,
-// 			  sectionTop = current.offsetTop - 58,
-// 			  sectionId = current.getAttribute('id'),
-// 			  sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
-
-// 		if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-// 			sectionsClass.classList.add('active-link')
-// 		}else{
-// 			sectionsClass.classList.remove('active-link')
-// 		}                                                    
-// 	})
-// }
-// window.addEventListener('scroll', scrollActive)
-
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 const sections = document.querySelectorAll('section[id]')
     
-function scrollActive(){
+const scrollActive = () =>{
   	const scrollY = window.pageYOffset
 
 	sections.forEach(current =>{
 		const sectionHeight = current.offsetHeight,
 			  sectionTop = current.offsetTop - 58,
-			  sectionId = current.getAttribute('id')
-			//   sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+			  sectionId = current.getAttribute('id'),
+			  sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
 
 		if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-			document.querySelector('.nav__menu a[href*=' + sectionId + ']').class.classList.add('active-link')
+			sectionsClass.classList.add('active-link')
 		}else{
-			document.querySelector('.nav__menu a[href*=' + sectionId + ']').class.classList.remove('active-link')
+			sectionsClass.classList.remove('active-link')
 		}                                                    
 	})
 }
